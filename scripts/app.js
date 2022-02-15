@@ -34,12 +34,7 @@ Employee.prototype.render = function(){
     let main = document.getElementsByTagName('main')[0];
 
     main.innerHTML = main.innerHTML +
-    "<b>ID</b>: " + this.empID + "<br />" +
     "<b>Name</b>: " + this.fullName + "<br />" +
-    "<b>Department</b>: " + this.department + "<br />" +
-    "<b>Level</b>: " + this.level + "<br />" +
-    "<b>Image</b>: " + this.image + "<br />" +
-    "<b>Salary</b>: " + this.salary + "<br />" +
     "<b>Net Salary</b>: " + this.netSalary + "<br />" +
     "-----------------------------------" + "<br />";
     
