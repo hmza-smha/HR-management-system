@@ -1,27 +1,27 @@
 'use-strict';
 
-var departments = ['Administration', 'Marketing', 'Development', 'Finance'];
-var levels = ['Junior', 'Mid-Senior', 'Senior'];
+var employees = [];
 
-function Employee(empID, fullName, departmentID, levelID, image){
+function Employee(empID, fullName, department, level, image) {
     this.empID = empID,
-    this.fullName = fullName,
-    this.department = departments[departmentID],
-    this.level = levels[levelID],
-    this.image = image
+        this.fullName = fullName,
+        this.department = department,
+        this.level = level,
+        this.image = image,
+        this.salary = 0
 }
 
-Employee.prototype.calculateNetSalary = function(){
+Employee.prototype.calculateNetSalary = function () {
 
     let salary;
 
-    if(this.level == "Senior"){
+    if (this.level == "Senior") {
         salary = getRandomNumberBetween(1500, 2000);
     }
-    else if(this.level == "Junior"){
+    else if (this.level == "Junior") {
         salary = getRandomNumberBetween(500, 1000);
     }
-    else{
+    else {
         salary = getRandomNumberBetween(1000, 1500);
     }
 
@@ -29,31 +29,88 @@ Employee.prototype.calculateNetSalary = function(){
     this.netSalary = salary - (salary * (7.5 / 100));
 }
 
-Employee.prototype.render = function(){
+Employee.prototype.render = function () {
 
-    let main = document.getElementsByTagName('main')[0];
+    // get this members container
+    let members = document.getElementById('members-container');
 
-    main.innerHTML = main.innerHTML +
-    "<b>Name</b>: " + this.fullName + "<br />" +
-    "<b>Net Salary</b>: " + this.netSalary + "<br />" +
-    "-----------------------------------" + "<br />";
-    
+    // create a card for the employee
+    let card = document.createElement("div");
+    card.classList.add("team-member");
+
+    // create profile-pic for the employee
+    let imgElement = document.createElement("img");
+    imgElement.classList.add("profile-pic");
+    let randPiId = getRandomNumberBetween(1,4);
+    imgElement.setAttribute("src", "assets/pic" +randPiId+ ".jpg");
+
+    card.appendChild(imgElement);
+
+    // create employee's info container
+    let empInfo = document.createElement("div");
+    empInfo.classList.add("info");
+
+    // create info elements
+    let id = document.createElement("p");
+    let name = document.createElement("p");
+    let department = document.createElement("p");
+    let level = document.createElement("p");
+    let salary = document.createElement("p");
+
+    id.innerHTML = "ID: " + this.empID;
+    name.innerHTML = "Name: " + this.fullName;
+    department.innerHTML = "Department: " + this.department;
+    level.innerHTML = "Level: " + this.level;
+    salary.innerHTML = "Salary: " + this.salary;
+
+    empInfo.appendChild(id);
+    empInfo.appendChild(name);
+    empInfo.appendChild(department);
+    empInfo.appendChild(level);
+    empInfo.appendChild(salary);
+
+    card.appendChild(empInfo);
+
+    members.appendChild(card);
 }
 
 
-function getRandomNumberBetween(min, max){
+document.getElementById('submit-btn').addEventListener("click", function () {
+
+    let full_name = document.getElementById('name');
+    let department = document.getElementById('department');
+    let level = document.getElementById('level');
+    let image = document.getElementById('image');
+
+    if(full_name.value == ""){
+        alert("Name is required!");
+        return;
+    }
+
+    let empId = getUniqueRandomID();
+
+    let newEmp = new Employee(empId, full_name.value, department.value,level.value,image.value );
+    newEmp.calculateNetSalary();
+
+    newEmp.render();
+
+    employees.push(newEmp);
+});
+
+function getRandomNumberBetween(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-var emp1 = new Employee(1000, "HamZa Samha", 1, 0, "img");
-var emp2 = new Employee(1001, "Ahmed Akram", 2, 1, "img");
-var emp3 = new Employee(1002, "HamZa Akram", 1, 2, "img");
+function getUniqueRandomID() {
 
-emp1.calculateNetSalary();
-emp2.calculateNetSalary();
-emp3.calculateNetSalary();
+    let id = getRandomNumberBetween(1000, 9999);
 
-emp1.render();
-emp2.render();
-emp3.render();
+    for (let i = 0; i < employees.length; i++) {
+        if (employees[i].empID == id) {
+            id = getRandomNumberBetween(1000, 9999);
+            i = 0;
+        }
+    }
 
+    return id;
+}
