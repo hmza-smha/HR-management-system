@@ -3,7 +3,7 @@
 var employees = [];
 
 function Employee(empID, fullName, department, level, image) {
-    this.empID = empID,
+        this.empID = empID,
         this.fullName = fullName,
         this.department = department,
         this.level = level,
@@ -41,8 +41,7 @@ Employee.prototype.render = function () {
     // create profile-pic for the employee
     let imgElement = document.createElement("img");
     imgElement.classList.add("profile-pic");
-    let randPiId = getRandomNumberBetween(1,4);
-    imgElement.setAttribute("src", "assets/pic" +randPiId+ ".jpg");
+    imgElement.setAttribute("src", this.image);
 
     card.appendChild(imgElement);
 
@@ -114,3 +113,20 @@ function getUniqueRandomID() {
 
     return id;
 }
+
+// render some emps
+function addEmployee(emp){
+    emp.calculateNetSalary();
+    emp.render();
+    employees.push(emp);
+}
+
+addEmployee(new Employee(getUniqueRandomID(), "Ghazi Samer", "Administration","Senior", "assets/Ghazi.jpg"));
+addEmployee(new Employee(getUniqueRandomID(), "Lana Ali", "Finance","Senior", "assets/Lana.jpg"));
+addEmployee(new Employee(getUniqueRandomID(), "Tamara Ayoub", "Marketing","Senior", "assets/Tamara.jpg"));
+addEmployee(new Employee(getUniqueRandomID(), "Safi Walid", "Administration","Mid-Senior", "assets/Safi.jpg"));
+addEmployee(new Employee(getUniqueRandomID(), "Omar Zaid", "Development","Senior", "assets/Omar.jpg"));
+addEmployee(new Employee(getUniqueRandomID(), "Rana Saleh", "Development","Junior", "assets/Rana.jpg"));
+addEmployee(new Employee(getUniqueRandomID(), "Hadi Ahmad", "Finance","Mid-Senior", "assets/Hadi.jpg"));
+
+
