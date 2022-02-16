@@ -17,6 +17,16 @@ header nav, footer{
     padding: 20px;
 }
 
+nav{
+    height: 90px;
+    display: flex;
+    align-items: center;
+}
+nav img{
+    float: left;
+    width: 50px;
+}
+
 a{
     text-decoration: none;
     margin: 10px 25px;
