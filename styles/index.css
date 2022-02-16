@@ -1,32 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap');
-
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-body{
-    font-family: 'Lato', sans-serif;
-    color: #072227;
-}
-
-header nav, footer{
-    background-color: #eee;
-    box-shadow: 10px 10px 15px #eee;
-    padding: 20px;
-}
-
-a{
-    text-decoration: none;
-    margin: 10px 25px;
-}
-
-.linkes{
-    display: inline-block;
-    margin: 0 50px;
-}
-
 main{
     margin: 50px 0;
     line-height: 20px;
@@ -34,7 +5,10 @@ main{
 
 form{
     display: inline-block;
-    margin: 0 50px; 
+    margin: 20px 0 0 85px; 
+    display: none;
+    position: absolute;
+    background-color: white;
 }
 
 form input[type=text], select{
@@ -43,19 +17,20 @@ form input[type=text], select{
     width: 200px;
     height: 30px;
     border: none;
-    background-color: #eee;
+    background-color: white;
     border-radius: 5px;
     outline: none;
     padding: 5px 10px;
     font-size: 15px;
     transition: all 300ms ease-in-out;
+    border: 1px solid #072227;
 }
 
 form input[type=text]:hover, select:hover{
     box-shadow: 0 0 5px #1d6875;
 }
 
-form #submit-btn{
+form #submit-btn, #add-btn{
     padding: 5px 25px;
     margin-top: 20px;
     border: 1px solid white;
@@ -67,8 +42,15 @@ form #submit-btn{
     transition: all 300ms ease-in-out;
 }
 
-form input[type=submit]:hover{
-    background-color: black;
+#add-btn{
+    margin-left: 85px;
+    padding: 10px 20px;
+    font-size: 17px;
+    display: block;
+}
+
+form #add-btn:hover{
+    background-color: rgb(68, 0, 85);
 }
 
 form fieldset{
@@ -77,13 +59,6 @@ form fieldset{
     border:none;
     box-shadow: 0 0 10px #1d6875;
     border-radius: 5px;
-}
-
-form fieldset legend{
-    font-size: 20px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-weight: 100;
-    color: #113f47;
 }
 
 #members-container{
@@ -97,7 +72,6 @@ form fieldset legend{
 .team-member {
     border: 1px solid black;
     text-align: center;
-    padding: 20px;
     margin: 50px;
     width: 300px;
 }
@@ -110,9 +84,4 @@ form fieldset legend{
 .info {
     font-size: 20px;
     line-height: 30px;
-}
-
-footer span{
-    display: block;
-    margin: 20px;
 }

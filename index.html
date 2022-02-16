@@ -6,13 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HR Management System</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/index.css">
 </head>
 
 <body>
     <header>
         <nav>
-            <img id="logo-pic" src="" alt="Logo">
+            <img src="assets/logo.png" alt="Logo">
             <div class="linkes">
                 <a href="accounting.html">Accounting</a>
                 <!-- <a href="">link #2</a>
@@ -22,10 +23,9 @@
     </header>
 
     <main>
-        <form>
+        <button id="add-btn">Add New Employee</button>
+        <form id="new-emp-form">
             <fieldset>
-                <legend>Add Employee</legend>
-
                 <label for="name">Full name</label>
                 <input type="text" id="name">
 
@@ -47,7 +47,7 @@
                 <label for="image">Image URL</label>
                 <input type="text" name="image" id="image">
 
-                <button type="button" id="submit-btn">Add</button>
+                <button type="submit" id="submit-btn">Add</button>
             </fieldset>
         </form>
         
