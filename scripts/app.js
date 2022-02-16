@@ -73,7 +73,6 @@ Employee.prototype.render = function () {
     members.appendChild(card);
 }
 
-
 document.getElementById('submit-btn').addEventListener("click", function () {
 
     let full_name = document.getElementById('name');
@@ -94,6 +93,25 @@ document.getElementById('submit-btn').addEventListener("click", function () {
     newEmp.render();
 
     employees.push(newEmp);
+});
+
+let displayForm = false;
+document.getElementById("add-btn").addEventListener("click", function(){
+
+    let form = document.getElementById('new-emp-form');
+    if(displayForm){
+        form.style.display = "none";
+        this.innerHTML = "Add New Employee";
+        this.style.backgroundColor = "#072227";
+        displayForm = false;
+    }
+    else{
+        form.style.display = "inline-block";
+        this.innerHTML = "Cancel";
+        this.style.backgroundColor = "red";
+        displayForm = true;
+    }
+    
 });
 
 function getRandomNumberBetween(min, max) {
@@ -120,6 +138,7 @@ function addEmployee(emp){
     emp.render();
     employees.push(emp);
 }
+
 
 addEmployee(new Employee(getUniqueRandomID(), "Ghazi Samer", "Administration","Senior", "assets/Ghazi.jpg"));
 addEmployee(new Employee(getUniqueRandomID(), "Lana Ali", "Finance","Senior", "assets/Lana.jpg"));
