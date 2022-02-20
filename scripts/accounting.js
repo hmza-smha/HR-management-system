@@ -22,6 +22,9 @@ let finance = {
     avarage: 0
 };
 
+let totalEmployees = 0;
+let totalSalary = 0;
+
 let employees = generatEmpsFromLocalStorage();
 
 function getDepartmentsData(){
@@ -50,6 +53,11 @@ function getDepartmentsData(){
     marketing.avarage = marketing.totSalary / marketing.noOfEmps;
     development.avarage = development.totSalary / development.noOfEmps;
     finance.avarage = finance.totSalary / finance.noOfEmps;
+
+    totalEmployees = employees.length;
+    for(let i = 0; i < employees.length; i++){
+        totalSalary += employees[i].salary;
+    }
 
 }
 
@@ -127,3 +135,4 @@ addRowToTable("Administration", administration.noOfEmps, administration.totSalar
 addRowToTable("Marketing", marketing.noOfEmps, marketing.totSalary, marketing.avarage);
 addRowToTable("Development", development.noOfEmps, development.totSalary, development.avarage);
 addRowToTable("Finance", finance.noOfEmps, finance.totSalary, finance.avarage);
+addRowToTable("total = 4", "total = " + totalEmployees,"total = " +  totalSalary, " ");
